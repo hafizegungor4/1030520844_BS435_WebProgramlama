@@ -50,22 +50,22 @@ public class InsertTest {
 
 
     @Test
-    public void insertMovie() {
+    public void insertCustomers() {
 
-        Customers movie = new Customers();
-        movie.setId(1L);
+        Customers customers = new Customers();
+        customers.setId(1L);
 
-        boolean persisted = persistInATransaction(movie);
+        boolean persisted = persistInATransaction(customers);
         assertTrue(persisted);
     }
 
     @Test
-    public void insertSong() {
+    public void insertOrderDetails() {
 
-        OrdersDetails song = new OrdersDetails();
-        song.setId(2L);
+        OrdersDetails ordersDetails = new OrdersDetails();
+        // ordersDetails.setId(2L);
 
-        boolean persisted = persistInATransaction(song);
+        boolean persisted = persistInATransaction(ordersDetails);
         assertTrue(persisted); // "Song" adında bir tablo yok
     }
 

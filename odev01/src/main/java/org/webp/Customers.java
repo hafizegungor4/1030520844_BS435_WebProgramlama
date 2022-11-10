@@ -1,8 +1,7 @@
 package org.webp;
-
-
 import javax.persistence.*;
-
+import javax.annotation.*;
+import java.util.List;
 
 /*
     "MovieDetails" isimi bir tablo bulunmamaktadir o yuzden hangi tablo maplenecek

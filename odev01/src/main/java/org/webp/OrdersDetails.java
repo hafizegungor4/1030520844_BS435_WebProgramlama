@@ -1,27 +1,33 @@
 package org.webp;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class OrdersDetails {
 
-    @Id
+    @Id @GeneratedValue
+    private long id;
+
+    @Id @NotNull
     private int productQuantity;
 
-    private int orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private List<Orders> orderId;
 
     private int productId;
 
     private int billId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id", cascade = CascadeType.ALL)
-    //Burada Lazy varsayilandir cunku veri yapisi buyuk olabilir
-    private Customers CustomerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private List<Customers> CustomerId;
 
-//Consructor Method
+    //Consructor Method
     public OrdersDetails(){}
 
-//Getter and Setter Method
+    //Getter and Setter Method
 
     public int getProductQuantity() {
         return productQuantity;
@@ -31,11 +37,11 @@ public class OrdersDetails {
         this.productQuantity = productQuantity;
     }
 
-    public int getOrderId() {
+    public List<Orders> getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(List<Orders> orderId) {
         this.orderId = orderId;
     }
 
@@ -55,11 +61,11 @@ public class OrdersDetails {
         this.billId = billId;
     }
 
-    public int getCustomerId() {
+    public List<Customers> getCustomerId() {
         return CustomerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(List<Customers> customerId) {
         CustomerId = customerId;
     }
 }

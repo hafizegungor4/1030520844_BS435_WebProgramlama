@@ -1,14 +1,16 @@
 package org.webp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "Orders")
 @Entity
 public class Orders {
-    @Column(name = "ID") @Id
+
+    @NotNull @GeneratedValue
+    private Long Id;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Long orderId;
 
     private String customerName;
@@ -21,9 +23,9 @@ public class Orders {
 
     private int productQuantity;
 
-    private string deliveryDate;
+    private String deliveryDate;
 
-    private string supplierName;
+    private String supplierName;
 
     private float price;
 
@@ -80,19 +82,19 @@ public class Orders {
         this.productQuantity = productQuantity;
     }
 
-    public string getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(string deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
-    public string getSupplierName() {
+    public String getSupplierName() {
         return supplierName;
     }
 
-    public void setSupplierName(string supplierName) {
+    public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
     }
 
