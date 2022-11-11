@@ -1,53 +1,60 @@
 package org.webp;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
-@Table(name = "Orders")
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Table(name = "Urun")
 @Entity
 public class Orders {
 
-    @NotNull @GeneratedValue
-    private Long Id;
+    @Id
+    private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Long orderId;
+    @Length(min=2, max = 128)
+    @NotNull
+    private String customername;
 
-    private String customerName;
-
+    @Range(min = 0, max = 150)
+    @NotBlank
+    @NotNull
     private String customerSurname;
 
-    private String productName;
 
-    private int pricePerUnit;
+    @NotBlank
+    private Float price;
 
-    private int productQuantity;
+    @OneToMany(mappedBy = "ordersID")
+    public List<OrderDetails>  ordersID = new ArrayList<>();
 
-    private String deliveryDate;
-
-    private String supplierName;
-
-    private float price;
-
-//Constructor Method
-    public Orders() {}
-
-//Getter and Setter Method
-
-    public Long getOrderId() {
-        return orderId;
+    //Constructor
+    public Orders() {
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    //Getter and Setter
+    
+    public Long getId() {
+        return id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public String getCustomername() {
+        return customername;
+    }
+
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
 
     public String getCustomerSurname() {
@@ -58,51 +65,19 @@ public class Orders {
         this.customerSurname = customerSurname;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public int getPricePerUnit() {
-        return pricePerUnit;
-    }
-
-    public void setPricePerUnit(int pricePerUnit) {
-        this.pricePerUnit = pricePerUnit;
-    }
-
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
-
-    public String getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(String deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public String getSupplierName() {
-        return supplierName;
-    }
-
-    public void setSupplierName(String supplierName) {
-        this.supplierName = supplierName;
-    }
-
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public List<OrderDetails> getOrdersID() {
+        return ordersID;
+    }
+
+    public void setOrdersID(List<OrderDetails> ordersID) {
+        this.ordersID = ordersID;
     }
 }

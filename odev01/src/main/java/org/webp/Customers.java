@@ -1,44 +1,43 @@
 package org.webp;
+
+
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
-import javax.annotation.*;
+import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.List;
 
-/*
-    "MovieDetails" isimi bir tablo bulunmamaktadir o yuzden hangi tablo maplenecek
-    belirtmek gerekmektedir
- */
+
 @Table(name = "Customers")
 @Entity
 public class Customers {
 
-    //@GeneratedValue ise biz her seferinde yeni bir kayıt eklediğimizde manual olarak 'id' vermemize
-    // gerek kalmıyor auto olarak kendi her kayıt için 'id' oluşturuyor.
-
-    @Id @GeneratedValue
+    @GeneratedValue
+    @Id
     private Long id;
 
-    private String customerName;
+    @OneToMany(mappedBy = "CustomerID")
+    private List<OrderDetails> customerID = new ArrayList<>();
 
-    private String customerSurname;
+    @NotNull
+    private String name;
 
-    private Long TC;
+    @NotNull
+    private String surname;
 
-    private char gender;
+    @NotNull
+    private String birthdate;
 
-    private long birthDate;
+    @NotBlank
+    private Long phoneNumber;
 
-    private long telNr1;
 
-    private long telNr2;
+    //Constructor
+    public Customers() { }
 
-    private int cityId;
+    //Getter and Setter
 
-    private int districtId;
-
-// Constructor method
-    public Customers(){}
-
-// Getter and Setter Method
     public Long getId() {
         return id;
     }
@@ -47,67 +46,43 @@ public class Customers {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public List<OrderDetails> getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomerID(List<OrderDetails> customerID) {
+        this.customerID = customerID;
     }
 
-    public String getCustomerSurname() {
-        return customerSurname;
+    public String getName() {
+        return name;
     }
 
-    public void setCustomerSurname(String customerSurname) {
-        this.customerSurname = customerSurname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Long getTC() {
-        return TC;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setTC(Long TC) {
-        this.TC = TC;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public char getGender() {
-        return gender;
+    public String getBirthdate() {
+        return birthdate;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
-    public long getBirthDate() {
-        return birthDate;
+    public Long getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setBirthDate(long birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public long getTelNr1() {
-        return telNr1;
-    }
-
-    public void setTelNr1(long telNr1) {
-        this.telNr1 = telNr1;
-    }
-
-    public long getTelNr2() {
-        return telNr2;
-    }
-
-    public void setTelNr2(long telNr2) {
-        this.telNr2 = telNr2;
-    }
-
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
