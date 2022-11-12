@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/1030520844_BS435_WebProgramlama.iml" filepath="$PROJECT_DIR$/.idea/1030520844_BS435_WebProgramlama.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/1030510398_BS435_WebProgramlama.iml" filepath="$PROJECT_DIR$/.idea/1030510398_BS435_WebProgramlama.iml" />
+      <module fileurl="file://$PROJECT_DIR$/odev01/TestProject.iml" filepath="$PROJECT_DIR$/odev01/TestProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/odev01/odev01.iml" filepath="$PROJECT_DIR$/odev01/odev01.iml" />
     </modules>
   </component>
 </project>
