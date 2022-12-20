@@ -1,5 +1,5 @@
-Öğrenci Numarası: 1030510398
+Öğrenci Numarası: 1030520844
 
-Öğrenci Adı: Samet Barut
+Öğrenci Adı: Hafize Güngör
 
 Ders Adı: BS435 Web Programlama
